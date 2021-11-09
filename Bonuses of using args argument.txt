@@ -1,0 +1,2 @@
+I guess most important feature of *args is that we can assign values right in brackets of calling function,
+without of intermediate variable assignment.
