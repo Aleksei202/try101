@@ -7,17 +7,20 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome(executable_path=r"C:\Users\Aleksei ThinkPad\PycharmProjects\chromedriver.exe")
 # to start Firefox use the line below
 # driver = webdriver.Firefox(executable_path='drivers/geckodriver')
+
+
 driver.get("https://techskillacademy.net/brainbucket/index.php?route=account/login")
+# implicit wait
+driver.implicitly_wait(5)
 
 driver.maximize_window()  # maximizing the browser window
 
 logo = driver.find_element_by_xpath("//img[@title='Brainbucket']")
 
+# new_registrant_btn = driver.find_element_by_xpath("//a[contains(text(), 'Continue')]")
 
-#new_registrant_btn = driver.find_element_by_xpath("//a[contains(text(), 'Continue')]")
 
-
-#updated new_registration_btn with WebDriverWait method
+# updated new_registration_btn with WebDriverWait method
 
 wd_wait = WebDriverWait(driver, 10)
 new_registrant_btn = wd_wait.until(
@@ -39,6 +42,10 @@ converted_background_color = Color.from_string(backround_color)
 assert converted_background_color.rgb == 'rgb(34, 154, 200)'
 
 new_registrant_btn.click()
+
+# Register Account explicit wait location
+register_account = wd_wait.until(
+   EC.visibility_of_element_located((By.ID, "content")))
 
 # Register Account
 # Personal Details
@@ -145,4 +152,4 @@ backround_color = continue_btn.value_of_css_property("background-color")
 converted_background_color = Color.from_string(backround_color)
 assert converted_background_color.rgb == 'rgb(34, 154, 200)'
 
-#driver.quit()
+driver.quit()
