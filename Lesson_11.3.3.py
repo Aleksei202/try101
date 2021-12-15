@@ -6,4 +6,13 @@ try:
 except ValueError:
     print('Yours input', date_row, 'does not match with format YYYY-MM-DD')
 
-print(date_formatted)
+week = {
+    0: 'Monday',
+    1: 'Tuesday',
+    2: 'Wednesday',
+    3: 'Thursday',
+    4: 'Friday',
+    5: 'Saturday',
+    6: 'Sunday'
+    }
+print(week[date_formatted.weekday()])
