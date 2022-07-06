@@ -258,7 +258,8 @@ def archive_list(board_name, list_name):
 
     params = {
         'key': APIKEY,
-        'token': TOKEN
+        'token': TOKEN,
+        'value': 'true'
     }
     response = requests.request(
         "PUT",
@@ -270,6 +271,7 @@ def archive_list(board_name, list_name):
     assert response.ok
     response_json = response.text
     print(response_json)
+
 
 def archive_list_2():
     url = "https://trello.com/1/lists/62be6304a18a9078f17cab0e/closed"
@@ -296,10 +298,10 @@ if __name__ == "__main__":
     # create_new_board("Test Automation 1")
     # update_board("Test Automation", desc="Add items to finish automation")
     # delete_board("Test Automation 1")
-    # create_new_list(board_name="Test Automation 1", list_name="second list")
+    #create_new_list(board_name="Test Automation 1", list_name="second list")
     # create_new_card(board_name="Test Automation 1", list_name="first list", card_name="card3")
     # update_card(board_name="Test Automation 1", list_name="first list", card_name="card2", desc="new description22")
     # get_card_id(board_name="Test Automation 1", list_name="first list", card_name="card2")
     # delete_card(board_name="Test Automation 1", list_name="first list", card_name="card3")
-    #archive_list(board_name="Test Automation 1", list_name="second list") #does not work, not clear why status code 400
-    archive_list_2() # copy from TRELLO REST IP site, does not work ,status 400
+    archive_list(board_name="Test Automation 1",list_name="second list")  # does not work, not clear why status code 400
+    # archive_list_2() # copy from TRELLO REST IP site, does not work ,status 400
